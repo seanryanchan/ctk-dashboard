@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CtkDashboard</title>
+    <title>CTK Dashboard</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,11 +11,15 @@
 
   <body>
     <%= render 'layouts/sidebar' %>
-    <%= render 'layouts/header' %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
-    <div class="container">
-      <%= debug(params) if Rails.env.development? %>
+    <div class="shift_right">
+      <%= render 'layouts/header' %>
+      <div class="container">
+        <%= yield %>
+      </div>
+      <%= render 'layouts/footer' %>
+      <div class="container">
+        <%= debug(params) if Rails.env.development? %>
+      </div>
     </div>
   </body>
 </html>

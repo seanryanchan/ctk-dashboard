@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :purchase_orders
   resources :products
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root "products#index"
+  get "/backlogs", to: "products#showBacklogs", as: "backlogs"
 end
