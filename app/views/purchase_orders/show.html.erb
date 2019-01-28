@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date order:</strong>
+  <%= @purchase_order.date_order %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @purchase_order.status %>
+</p>
+
+<%= link_to 'Edit', edit_purchase_order_path(@purchase_order) %> |
+<%= link_to 'Back', purchase_orders_path %>
