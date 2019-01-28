@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_28_105510) do
+ActiveRecord::Schema.define(version: 2019_01_28_095815) do
 
   create_table "products", force: :cascade do |t|
     t.string "brand"
@@ -19,13 +19,6 @@ ActiveRecord::Schema.define(version: 2019_01_28_105510) do
     t.boolean "backlogged"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "products_purchase_orders", id: false, force: :cascade do |t|
-    t.integer "products_id"
-    t.integer "purchase_orders_id"
-    t.index ["products_id"], name: "index_products_purchase_orders_on_products_id"
-    t.index ["purchase_orders_id"], name: "index_products_purchase_orders_on_purchase_orders_id"
   end
 
   create_table "purchase_orders", force: :cascade do |t|
