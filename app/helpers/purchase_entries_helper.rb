@@ -1,0 +1,2 @@
+module PurchaseEntriesHelper
+end
