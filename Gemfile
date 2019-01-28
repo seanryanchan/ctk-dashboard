@@ -6,9 +6,11 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 
-# Use Bootstrap and JQuery
-gem 'bootstrap-sass'
+# Use Bootstrap and JQuery and popper.js and sprockets-rails
+gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'popper_js', '~> 1.14.5'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 # Use sqlite3 as the database for Active Record
 # Use Puma as the app server

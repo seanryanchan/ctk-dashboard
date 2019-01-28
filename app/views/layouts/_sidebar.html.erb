@@ -1,10 +1,16 @@
-<div class="sidenav">
-  <h5>MAIN</h5>
-  <%= link_to "Current Inventory", products_path %>
-  <%= link_to "Purchase Orders", purchase_orders_path %>
-  <%= link_to "Year-End Reports", "#" %>
-  <%= link_to "Backlogs", backlogs_path %>
-  <h5>PEOPLE</h5>
-  <%= link_to "Users", "#" %>
-  <%= link_to "View History", "#" %>
+<div class="sidenav text-white bg-dark">
+  <div class="container">
+    <h5>MAIN</h5>
+    <ul>
+      <li><%= link_to "Current Inventory", products_path %></li>
+      <li><%= link_to "Purchase Orders", purchase_orders_path %></li>
+      <li><%= link_to "Year-End Reports", "#" %></li>
+      <li><%= link_to "Backlogs", backlogs_path %></li>
+    </ul>
+    <h5>PEOPLE</h5>
+    <ul>
+      <li><%= link_to "Users", "#" %></li>
+      <li><%= link_to "View History", "#" %></li>
+    </ul>
+  </div>
 </div>
