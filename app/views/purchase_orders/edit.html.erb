@@ -4,3 +4,36 @@
 
 <%= link_to 'Show', @purchase_order %> |
 <%= link_to 'Back', purchase_orders_path %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product name</th>
+      <th>Product ID / SKU</th>
+      <th>Product qty</th>
+      <th>PO Number</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @purchase_order.purchase_entries.each do |purchase_entry| %>
+    <tr>
+      <td><%= purchase_entry.product_name %></td>
+      <td><%= purchase_entry.product_id %></td>
+      <td><%= purchase_entry.product_qty %></td>
+      <td><%= purchase_entry.purchase_order_id %></td>
+      <td>
+        <% if (purchase_entry.status == "0") %>
+        <b class="text-danger">UNCONFIRMED</b>
+        <% end %>
+        <% if (purchase_entry.status == "1") %>
+        <b class="text-success">CONFIRMED</b>
+        <% end %></td>
+        <td><%= link_to 'Show', purchase_entry %></td>
+        <td><%= link_to 'Edit', edit_purchase_entry_path(purchase_entry) %></td>
+        <td><%= link_to 'Destroy', purchase_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+</table>
