@@ -1,5 +1,23 @@
 <h1>New Purchase Entry</h1>
 
 <%= render 'form', purchase_entry: @purchase_entry %>
+<h3>List of Products Available</h3>
+<table class="table text-white">
+  <thead>
+    <tr>
+      <th>Brand</th>
+      <th>Product type</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
 
-<%= link_to 'Back', purchase_entries_path %>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.brand %></td>
+        <td><%= product.product_type %></td>
+        <td><%= product.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
