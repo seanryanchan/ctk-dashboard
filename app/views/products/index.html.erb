@@ -1,7 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Products</h1>
-
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-lg-auto">
+      # Search bar #
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary"><%= link_to 'New Product', new_product_path %></button>
+    </div>
+  </div>
+</div>
 <table class="table text-white">
   <thead>
     <tr>
@@ -27,5 +36,3 @@
 </table>
 
 <br>
-
-<button class="btn-primary"><%= link_to 'New Product', new_product_path %></button>
