@@ -4,7 +4,10 @@
 <div class="container mb-5">
   <div class="row">
     <div class="col-lg-auto">
-      # Search bar #
+      <%= form_tag({controller: "products", action: "brandQuery"}, method: :get, class: :form) do %>
+        <%= text_field_tag :brand_query %>
+        <%= submit_tag 'Search', name: nil %>
+      <% end %>
     </div>
     <div class="col-auto">
       <button class="btn btn-primary"><%= link_to 'New Product', new_product_path %></button>

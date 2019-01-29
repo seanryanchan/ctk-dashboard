@@ -1,6 +1,15 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  def brandQuery
+    if(params[:brand_query])
+      @products = Product.where('brand LIKE ?', "%#{params[:brand_query]}%")
+    else
+      @products = Product.all
+    end
+    render 'index'
+  end
+
   # GET /products
   # GET /products.json
   def index
@@ -69,6 +78,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:brand, :product_type, :quantity, :backlogged)
+      params.require(:product).permit(:brand, :product_type, :quantity, :backlogged, :brand_query)
     end
 end
