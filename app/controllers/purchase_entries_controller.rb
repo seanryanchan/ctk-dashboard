@@ -1,6 +1,13 @@
 class PurchaseEntriesController < ApplicationController
   before_action :set_purchase_entry, only: [:show, :edit, :update, :destroy]
-
+  def showBacklogs
+    # status of 1 means backlogged.
+    @purchase_entries = PurchaseEntry.find_by(status: 1)
+    if (!@purchase_entries)
+      @purchase_entries = []
+    end
+    render "backlogs"
+  end
   # GET /purchase_entries
   # GET /purchase_entries.json
   def index

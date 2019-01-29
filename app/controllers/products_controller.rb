@@ -1,12 +1,5 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  def showBacklogs
-    @products = Product.find_by(backlogged: true)
-    if (!@products)
-      @products = []
-    end
-    render "index"
-  end
 
   # GET /products
   # GET /products.json
