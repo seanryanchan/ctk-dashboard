@@ -13,6 +13,7 @@
 
 $dark: #2E3138;
 $primary: #6D7CE1;
+$navbar-gray: #333746;
 @import "bootstrap";
 
 /* The sidebar menu */
@@ -25,16 +26,31 @@ $primary: #6D7CE1;
   left: 0;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
+  box-shadow: 5px -5px 46px -8px rgba(0, 0, 12, 0.88)
 }
 
 /* Style page content */
 .shift_right {
   margin-left: 160px; /* Same as the width of the sidebar */
-  margin-right: 10px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+.navbar {
+  background-color: #333746;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  box-shadow: 0px 0px 46px -8px rgba(0, 0, 12, 0.88);
+}
+.navbar > * {
+  box-shadow: 0px 0px 0px 0px;
+}
+
+a {
+  color: $white;
+  font-weight: bold;
 }
