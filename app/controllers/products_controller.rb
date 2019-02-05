@@ -1,6 +1,42 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  def addForm
+    @product = Product.find(params[:id])
+  end
+
+  def add
+    @product = Product.find(params[:id])
+    @product.quantity = @product.quantity + params[:add_qty].to_i
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.json { render :show, status: :ok, location: @product }
+      else
+        format.html { render :edit }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def releaseForm
+    @product = Product.find(params[:id])
+  end
+
+  def release
+    @product = Product.find(params[:id])
+    @product.quantity = @product.quantity - params[:released_qty].to_i
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.json { render :show, status: :ok, location: @product }
+      else
+        format.html { render :edit }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def brandQuery
     if(params[:brand_query])
       @products = Product.where('brand LIKE ?', "%#{params[:brand_query]}%")
@@ -78,6 +114,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:brand, :product_type, :quantity, :unit_price, :brand_query)
+      params.require(:product).permit(:brand, :product_type, :quantity, :unit_price, :brand_query, :released_qty, :add_qty)
     end
 end

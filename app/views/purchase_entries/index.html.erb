@@ -15,7 +15,7 @@
   <tbody>
     <% @purchase_entries.each do |purchase_entry| %>
       <tr>
-        <td><%= purchase_entry.product_name %></td>
+        <td><%= purchase_entry.brand %></td>
         <td><%= purchase_entry.product_qty %></td>
         <td><%= purchase_entry.status %></td>
         <td><%= link_to 'Show', purchase_entry %></td>

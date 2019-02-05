@@ -1,5 +1,8 @@
-<h1>New Product</h1>
+<div class="container card bg-secondary text-white">
+  <h1 class="card-title">New Product</h1>
+  <div class="card-body">
+    <%= render 'form', product: @product, class: :form %>
 
-<%= render 'form', product: @product, class: :form %>
+  </div>
 
-<%= link_to 'Back', products_path %>
+</div>

@@ -1,0 +1,71 @@
+<div class="container row">
+  <div class="col-sm-6">
+    <div class="card bg-secondary text-white container">
+      <div class="card-title">
+        <h2>Item Details</h2>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-5 font-weight-bold">
+            Brand
+          </div>
+          <div class="col-md">
+            <%= @product.brand %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5 font-weight-bold">
+            Product Type
+          </div>
+          <div class="col-md">
+            <%= @product.product_type %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card bg-secondary text-white container ">
+      <div class="card-title">
+        <h2>Release Item</h2>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-5 font-weight-bold">
+            Current quantity
+          </div>
+          <div class="col-auto">
+            <%= @product.quantity %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+            Release Quantity
+          </div>
+          <div class="col-auto">
+
+          </div>
+          <%= form_for @product, url: release_product_path(@product), class: :form, method: :patch do |form| %>
+            <% if @product.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+                <ul>
+                <% @product.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="field">
+              <%= number_field_tag :released_qty %>
+            </div>
+            <div class="actions">
+              <%= form.submit 'Release', class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

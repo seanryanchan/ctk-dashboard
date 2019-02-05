@@ -1,11 +1,53 @@
 class PurchaseEntriesController < ApplicationController
   before_action :set_purchase_entry, only: [:show, :edit, :update, :destroy]
-  def showBacklogs
-    # status of 1 means backlogged.
-    @purchase_entries = PurchaseEntry.find_by(status: 1)
-    if (!@purchase_entries)
-      @purchase_entries = []
+
+  # status legend
+  # 0 - unconfirmed
+  # 1 - confirmed
+  # 2 - backlogged
+
+  def backlogForm
+    @product = Product.find(params[:id])
+    @purchase_entry = PurchaseEntry.new(status: 2, product_id: @product.id, brand: @product.brand)
+    @purchase_orders = PurchaseOrder.all
+  end
+
+  def backlog
+    @product = Product.find(params[:id])
+    @purchase_entry = PurchaseEntry.new(purchase_entry_params)
+    respond_to do |format|
+      if @purchase_entry.save
+        format.html { redirect_to @purchase_entry, notice: 'Purchase entry was successfully created.' }
+        format.json { render :show, status: :created, location: @purchase_entry }
+      else
+        format.html { render :new }
+        format.json { render json: @purchase_entry.errors, status: :unprocessable_entity }
+      end
     end
+  end
+
+  def createEntryForm
+    @product = Product.find(params[:id])
+    @purchase_orders = PurchaseOrder.all
+    @purchase_entry = PurchaseEntry.new
+  end
+
+  def createEntry
+    @purchase_entry = PurchaseEntry.new(purchase_entry_params)
+    @products = Product.all
+    respond_to do |format|
+      if @purchase_entry.save
+        format.html { redirect_to @purchase_entry, notice: 'Purchase entry was successfully created.' }
+        format.json { render :show, status: :created, location: @purchase_entry }
+      else
+        format.html { render :new }
+        format.json { render json: @purchase_entry.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def showBacklogs
+    @purchase_entries = PurchaseEntry.all
     render "backlogs"
   end
   # GET /purchase_entries
@@ -22,6 +64,7 @@ class PurchaseEntriesController < ApplicationController
   # GET /purchase_entries/new
   def new
     @purchase_entry = PurchaseEntry.new
+    @products = Product.all
   end
 
   # GET /purchase_entries/1/edit
@@ -76,6 +119,6 @@ class PurchaseEntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_entry_params
-      params.require(:purchase_entry).permit(:product_name, :product_qty, :status)
+      params.require(:purchase_entry).permit(:product_name, :product_qty, :status, :product_id, :purchase_order_id, :brand)
     end
 end

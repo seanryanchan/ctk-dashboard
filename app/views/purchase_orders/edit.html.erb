@@ -31,7 +31,7 @@
         <b class="text-success">CONFIRMED</b>
         <% end %></td>
         <td><%= link_to 'Show', purchase_entry %></td>
-        <td><%= link_to 'Edit', edit_purchase_entry_path(purchase_entry) %></td>
+        <td><%= link_to 'Edit', edit_purchase_entry_path(purchase_entry), class: "btn btn-warning"%></td>
         <td><%= link_to 'Destroy', purchase_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>

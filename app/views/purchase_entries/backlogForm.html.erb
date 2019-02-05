@@ -1,0 +1,133 @@
+<div class="container row">
+  <div class="col-sm-6">
+    <div class="card bg-secondary text-white container">
+      <div class="card-title">
+        <h2>Product Details</h2>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-5 font-weight-bold">Product ID</div>
+          <div class="col-md"><%= @product.id %></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5 font-weight-bold">Brand</div>
+          <div class="col-md"><%= @product.brand %></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5 font-weight-bold">
+            Product Type
+          </div>
+          <div class="col-md">
+            <%= @product.product_type %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5 font-weight-bold">
+            Current Quantity
+          </div>
+          <div class="col-md">
+            <%= @product.quantity %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card bg-secondary text-white container">
+      <h2 class="card-title">Create Purchase Entry</h2>
+      <div class="card-body">
+        <%= form_for @purchase_entry, url: create_entry_path, class: :form, method: :post do |form| %>
+        <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+          <ul>
+            <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+        <% @purchase_entry[:product_id] = @product.id %>
+        <% @purchase_entry[:brand] = @product.brand %>
+        <div class="field">
+          <%= form.label :product_qty %>
+          <%= form.number_field :product_qty %>
+        </div>
+
+        <div class="field">
+          <%= form.label :status %>
+          <%= form.number_field :status %>
+        </div>
+        <div class="field">
+          <%= form.label :purchase_order_id, value: "Purchase Order ID" %>
+          <%= form.number_field :purchase_order_id %>
+        </div>
+        <div class="actions">
+          <%= form.submit 'Create Purchase Entry', class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<h2>List of Purchase Orders</h2>
+<% @purchase_orders.each do |purchase_order| %>
+<div class="card bg-dark text-white">
+  <div class="card-body bg-secondary">
+    <h4 class="card-title">PO #<%= purchase_order.id %></h4>
+      <% if (purchase_order.status.upcase == "UNCONFIRMED") %>
+         <h5 class="text-danger">UNCONFIRMED</h5>
+      <% end %>
+      <% if (purchase_order.status.upcase == "CONFIRMED") %>
+        <h5 class="text-success">CONFIRMED</h5>
+      <% end %>
+    <p>Created at <%= purchase_order.created_at %></p>
+  </div>
+  <div class="mb-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Product ID / SKU</th>
+          <th>Product qty</th>
+          <th>Status</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% purchase_order.purchase_entries.each do |purchase_entry| %>
+        <tr>
+          <td><%= purchase_entry.brand %></td>
+          <td><%= purchase_entry.product_id %></td>
+          <td><%= purchase_entry.product_qty %></td>
+          <td>
+            <% if (purchase_entry.status == 0) %>
+            <b class="text-danger">UNCONFIRMED</b>
+            <% end %>
+            <% if (purchase_entry.status == 1) %>
+            <b class="text-success">CONFIRMED</b>
+            <% end %></td>
+            <td><%= link_to 'Show', purchase_entry %></td>
+            <td><%= link_to 'Edit', edit_purchase_entry_path(purchase_entry) %></td>
+            <td><%= link_to 'Destroy', purchase_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-danger"%></td>
+          </tr>
+          <% end %>
+        </tbody>
+    </table>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <button class="btn btn-primary"><%= link_to 'Show', purchase_order %></button>
+      </div>
+      <div class="col-sm">
+        <button class="btn btn-info">  <%= link_to 'Edit', edit_purchase_order_path(purchase_order) %></button>
+      </div>
+      <div class="col-sm">
+        <button class="btn btn-danger"><%= link_to 'Destroy', purchase_order, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
