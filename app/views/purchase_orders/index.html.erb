@@ -39,6 +39,7 @@
           <td><%= purchase_entry.product_id %></td>
           <td><%= purchase_entry.product_qty %></td>
           <td>
+            <%# 0 means Unconfirmed, 1 means confirmed %>
             <% if (purchase_entry.status == 0) %>
             <b class="text-danger">UNCONFIRMED</b>
             <% end %>

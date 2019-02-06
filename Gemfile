@@ -7,7 +7,7 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.2'
 
 # Use Bootstrap and JQuery and popper.js and sprockets-rails
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.5'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
@@ -44,7 +44,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.6'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
