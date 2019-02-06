@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/create_entry', to: 'purchase_entries#createEntry', as: 'create_entry'
   get '/create_backlog_form/:id', to: 'purchase_entries#backlogForm', as: 'backlog_form'
   post '/create_backlog', to: 'purchase_entries#backlog', as: 'create_backlog'
+  get 'year_end', to: 'products#yearEnd', as: 'year_end'
   resources :purchase_entries
   resources :purchase_orders
   resources :products do

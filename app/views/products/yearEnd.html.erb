@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card container bg-secondary">
+  <table class="table text-white table-dark table-striped">
+    <div class="card-title text-center">
+      <h2>CTK Year End Report</h2>
+    </div>
+    <thead class="">
+      <tr>
+        <th>Brand</th>
+        <th>Product type</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th colspan="2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+      <tr>
+        <td><%= product.brand %></td>
+        <td><%= product.product_type %></td>
+        <td><%= product.quantity %></td>
+        <td><%= product.unit_price %></td>
+        <td><%= link_to 'Edit', edit_product_path(product), class: "text-warning"%></td>
+        <td ><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-danger"%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

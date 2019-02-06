@@ -1,6 +1,10 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  def yearEnd
+    @products = Product.all
+  end
+
   def addForm
     @product = Product.find(params[:id])
   end
