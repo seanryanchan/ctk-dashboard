@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get "/backlogs", to: "purchase_entries#showBacklogs", as: "backlogs"
   get 'year_end', to: 'products#yearEnd', as: 'year_end'
   root "products#index"
+  get '/signup', to: 'users#new', as: 'signup'
+  post '/signup', to: 'users#createPurchasing', as: 'create_user'
   resources :purchase_entries
   resources :purchase_orders
   resources :products do
