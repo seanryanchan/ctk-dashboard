@@ -9,13 +9,11 @@ class UsersController < ApplicationController
 
   def createPurchasing
     @user = User.new(user_params)
-    @user.rank = 1
+    @user.rank = 0
     if @user.save
-      format.html { redirect_to @user, notice: 'Purchasing account was successfully created.' }
-      format.json { render :show, status: :created, location: @user }
+      redirect_to products_path
     else
-      format.html { render :new }
-      format.json { render json: @user.errors, status: :unprocessable_entity }
+      new
     end
   end
 

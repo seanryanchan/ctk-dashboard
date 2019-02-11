@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  brand: MyString
-  product_type: MyString
-  quantity: 1
-  backlogged: false
-
-two:
-  brand: MyString
-  product_type: MyString
-  quantity: 1
-  backlogged: false
+# one:
+#   brand: MyString
+#   product_type: MyString
+#   quantity: 1
+#   backlogged: false
+#
+# two:
+#   brand: MyString
+#   product_type: MyString
+#   quantity: 1
+#   backlogged: false

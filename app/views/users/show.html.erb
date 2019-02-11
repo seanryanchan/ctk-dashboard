@@ -1,0 +1,17 @@
+<div class="card bg-secondary text-white container">
+  <div class="card-title">
+    <h2>Account Profile</h2>
+  </div>
+  <div class="card-body">
+    <%= @user.id %>
+    <%= @user.username %>
+    <%# 0 - purchasing, 1 - admin, 2 - audit %>
+    <% if @user.rank == 0 %>
+      Purchasing
+    <% elsif @user.rank == 1 %>
+      Admin
+    <% elsif @user.rank == 2 %>
+      Audit
+    <% end %>
+  </div>
+</div>
