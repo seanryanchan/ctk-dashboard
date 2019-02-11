@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
   get 'products/:id/release_form', to: 'products#releaseForm', as: 'release_product_form'
   patch 'products/:id/release', to: 'products#release', as: 'release_product'
   get 'products/:id/create_entry_form', to: 'purchase_entries#createEntryForm', as: 'create_entry_form'

@@ -1,0 +1,22 @@
+<div class="card bg-secondary text-white container">
+  <h2 class="card-title">Log-in</h2>
+  <div class="card-body">
+    <%= form_for :session, url: login_path, class: :form, method: :post do |form| %>
+    <div class="field">
+      <%= form.label :username %>
+      <%= form.text_field :username %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password %>
+      <%= form.text_field :password %>
+    </div>
+    <div class="actions">
+      <%= form.submit 'Log-in', class: "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+  <p>
+    <%= link_to 'Sign Up', signup_path %>
+  </p>
+</div>
