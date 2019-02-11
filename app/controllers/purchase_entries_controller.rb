@@ -8,13 +8,16 @@ class PurchaseEntriesController < ApplicationController
 
   def backlogForm
     @product = Product.find(params[:id])
-    @purchase_entry = PurchaseEntry.new(status: 2, product_id: @product.id, brand: @product.brand)
+    @purchase_entry = PurchaseEntry.new()
     @purchase_orders = PurchaseOrder.all
   end
 
   def backlog
     @product = Product.find(params[:id])
     @purchase_entry = PurchaseEntry.new(purchase_entry_params)
+    @purchase_entry.status = 2
+    @purchase_entry.product_id = @product.id
+    @purchase_entry.brand = @product.brand
     respond_to do |format|
       if @purchase_entry.save
         format.html { redirect_to @purchase_entry, notice: 'Purchase entry was successfully created.' }
@@ -29,11 +32,14 @@ class PurchaseEntriesController < ApplicationController
   def createEntryForm
     @product = Product.find(params[:id])
     @purchase_orders = PurchaseOrder.all
-    @purchase_entry = PurchaseEntry.new
+    @purchase_entry = PurchaseEntry.new()
   end
 
   def createEntry
+    @product = Product.find(params[:id])
     @purchase_entry = PurchaseEntry.new(purchase_entry_params)
+    @purchase_entry.product_id = @product.id
+    @purchase_entry.brand = @product.brand
     @products = Product.all
     respond_to do |format|
       if @purchase_entry.save

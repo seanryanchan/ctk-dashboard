@@ -40,12 +40,10 @@
           <td><%= purchase_entry.product_qty %></td>
           <td>
             <%# 0 means Unconfirmed, 1 means confirmed %>
-            <% if (purchase_entry.status == 0) %>
-            <b class="text-danger">UNCONFIRMED</b>
-            <% end %>
-            <% if (purchase_entry.status == 1) %>
-            <b class="text-success">CONFIRMED</b>
-            <% end %></td>
+            <% if (purchase_entry.status == 0) %><b class="text-danger">UNCONFIRMED</b><% end %>
+            <% if (purchase_entry.status == 1) %><b class="text-success">CONFIRMED</b><% end %>
+            <% if (purchase_entry.status == 2) %><b class="text-warning">BACKLOGGED</b><% end %>
+          </td>
             <td><%= link_to 'Show', purchase_entry %></td>
             <td><%= link_to 'Edit', edit_purchase_entry_path(purchase_entry) %></td>
             <td><%= link_to 'Destroy', purchase_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-danger"%></td>

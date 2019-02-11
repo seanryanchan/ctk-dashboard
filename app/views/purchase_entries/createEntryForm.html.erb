@@ -36,19 +36,17 @@
     <div class="card bg-secondary text-white container">
       <h2 class="card-title">Create Purchase Entry</h2>
       <div class="card-body">
-        <%= form_for @purchase_entry, url: create_entry_path, class: :form, method: :post do |form| %>
-        <% if @product.errors.any? %>
+        <%= form_for @purchase_entry, url: create_entry_path(@product.id), class: :form, method: :post do |form| %>
+        <% if @purchase_entry.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+          <h2><%= pluralize(@purchase_entry.errors.count, "error") %> prohibited this purchase entry from being saved:</h2>
           <ul>
-            <% @product.errors.full_messages.each do |message| %>
+            <% @purchase_entry.errors.full_messages.each do |message| %>
             <li><%= message %></li>
             <% end %>
           </ul>
         </div>
         <% end %>
-        <% @purchase_entry[:product_id] = @product.id %>
-        <% @purchase_entry[:brand] = @product.brand %>
         <div class="field">
           <%= form.label :product_qty %>
           <%= form.number_field :product_qty %>

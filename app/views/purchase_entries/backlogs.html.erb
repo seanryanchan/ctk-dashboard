@@ -22,9 +22,9 @@
           <td><%= purchase_entry.product_id %></td>
           <td><%= purchase_entry.product_qty %></td>
           <td><%= purchase_entry.purchase_order_id %></td>
-          <td><%= link_to 'Show', purchase_entry %></td>
-          <td><%= link_to 'Edit', edit_purchase_entry_path(purchase_entry) %></td>
-          <td><%= link_to 'Destroy', purchase_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Release', '#', class: "text-success" %></td>
+          <td><%= link_to 'Edit', edit_purchase_entry_path(purchase_entry), class: "text-warning" %></td>
+          <td><%= link_to 'Delete', purchase_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-danger" %></td>
         </tr>
       <% end %>
     <% end %>
