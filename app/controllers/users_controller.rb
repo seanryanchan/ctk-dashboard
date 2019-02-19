@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-  def new
+  def newPurchasing
     @user = User.new()
-    render 'create_account'
+    render 'create_purchasing_account'
   end
 
   def createPurchasing
