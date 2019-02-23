@@ -2,11 +2,19 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def yearEnd
-    @products = Product.all
+    if logged_in?
+      @products = Product.all
+    else
+      redirect_to root_url
+    end
   end
 
   def addForm
-    @product = Product.find(params[:id])
+    if logged_in?
+      @product = Product.find(params[:id])
+    else
+      redirect_to logged_in?
+    end
   end
 
   def add
@@ -53,7 +61,11 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    if logged_in?
+      @products = Product.all
+    else
+      redirect_to root_url
+    end
   end
 
   # GET /products/1
@@ -63,7 +75,11 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
+    if logged_in?
+      @product = Product.new
+    else
+      redirect_to root_url
+    end
   end
 
   # GET /products/1/edit

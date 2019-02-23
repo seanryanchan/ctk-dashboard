@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card container bg-secondary">
+  <h1 class="card-title text-center">View History</h1>
+
+  <table class="table text-white table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>User</th>
+        <th>Type</th>
+        <th>Log in</th>
+        <th>Log out</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @histories.each do |history| %>
+        <tr>
+          <td>
+            <%= history.date_action.day %>-<%= history.date_action.month.to_s[0..2] %>-<%= history.date_action.year.to_s[2..3] %>
+          </td>
+          <td><%= history.user.username %></td>
+          <td>
+            <% if history.user.rank == 0 %>
+              Purchasing
+            <% end %>
+            <% if history.user.rank == 1 %>
+              Admin
+            <% end %>
+          </td>
+          <td><%= history.log_in_timestamp %></td>
+          <td><%= history.log_out_timestamp %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

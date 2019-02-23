@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @history.user_id %>
+</p>
+
+<p>
+  <strong>Date action:</strong>
+  <%= @history.date_action %>
+</p>
+
+<p>
+  <strong>Log in timestamp:</strong>
+  <%= @history.log_in_timestamp %>
+</p>
+
+<p>
+  <strong>Log out timestamp:</strong>
+  <%= @history.log_out_timestamp %>
+</p>
+
+<%= link_to 'Edit', edit_history_path(@history) %> |
+<%= link_to 'Back', histories_path %>

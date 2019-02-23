@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
+  get '/history', to: 'histories#index', as: 'history'
+  root "sessions#new"
+  post '/login', to: 'sessions#create', as: 'login'
   delete '/logout', to: 'sessions#destroy'
   get '/signup', to: 'users#newPurchasing', as: 'signup'
-  post '/signup', to: 'users#createPurchasing', as: 'create_user'
+  post '/signup', to: 'users#createPurchasing', as: 'create_purchasing_user'
+
   get 'products/:id/release_form', to: 'products#releaseForm', as: 'release_product_form'
   patch 'products/:id/release', to: 'products#release', as: 'release_product'
   get 'products/:id/create_entry_form', to: 'purchase_entries#createEntryForm', as: 'create_entry_form'
@@ -12,7 +14,6 @@ Rails.application.routes.draw do
   post '/create_backlog/:id', to: 'purchase_entries#backlog', as: 'create_backlog'
   get "/backlogs", to: "purchase_entries#showBacklogs", as: "backlogs"
   get 'year_end', to: 'products#yearEnd', as: 'year_end'
-  root "products#index"
   resources :purchase_entries
   resources :purchase_orders
   resources :products do

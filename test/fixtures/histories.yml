@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  date_action: 2019-02-23 23:10:40
+  log_in_timestamp: 2019-02-23 23:10:40
+  log_out_timestamp: 2019-02-23 23:10:40
+
+two:
+  user_id: 1
+  date_action: 2019-02-23 23:10:40
+  log_in_timestamp: 2019-02-23 23:10:40
+  log_out_timestamp: 2019-02-23 23:10:40

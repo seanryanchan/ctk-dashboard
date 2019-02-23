@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_11_073522) do
+ActiveRecord::Schema.define(version: 2019_02_23_151040) do
+
+  create_table "histories", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "date_action"
+    t.datetime "log_in_timestamp"
+    t.datetime "log_out_timestamp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "brand"
@@ -29,7 +38,6 @@ ActiveRecord::Schema.define(version: 2019_02_11_073522) do
     t.datetime "updated_at", null: false
     t.integer "product_id"
     t.integer "status"
-    t.string "brand"
     t.index ["purchase_order_id"], name: "index_purchase_entries_on_purchase_order_id"
   end
 
