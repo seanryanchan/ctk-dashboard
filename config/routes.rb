@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+
+  get '/create_user', to: 'users#newUser', as: 'create_user'
+  post '/create_user', to: 'users#createUser'
+  get '/users/:id', to: 'users#show', as: 'user'
+
   get '/history', to: 'histories#index', as: 'history'
   root "sessions#new"
   post '/login', to: 'sessions#create', as: 'login'
   delete '/logout', to: 'sessions#destroy'
   get '/signup', to: 'users#newPurchasing', as: 'signup'
   post '/signup', to: 'users#createPurchasing', as: 'create_purchasing_user'
+
 
   get 'products/:id/release_form', to: 'products#releaseForm', as: 'release_product_form'
   patch 'products/:id/release', to: 'products#release', as: 'release_product'

@@ -3,15 +3,18 @@
     <h2>Account Profile</h2>
   </div>
   <div class="card-body">
-    <%= @user.id %>
-    <%= @user.username %>
+    <h4>
+      <%= @user.username %>
+    </h4>
     <%# 0 - purchasing, 1 - admin, 2 - audit %>
-    <% if @user.rank == 0 %>
+    <p>
+      <% if @user.rank == 0 %>
       Purchasing
-    <% elsif @user.rank == 1 %>
+      <% elsif @user.rank == 1 %>
       Admin
-    <% elsif @user.rank == 2 %>
+      <% elsif @user.rank == 2 %>
       Audit
-    <% end %>
+      <% end %>
+    </p>
   </div>
 </div>
