@@ -95,8 +95,8 @@
       <tbody>
         <% purchase_order.purchase_entries.each do |purchase_entry| %>
         <tr>
-          <td><%= purchase_entry.brand %></td>
-          <td><%= purchase_entry.product_id %></td>
+          <td><%= purchase_entry.product.brand %></td>
+          <td><%= purchase_entry.product.id %></td>
           <td><%= purchase_entry.product_qty %></td>
           <td>
             <% if (purchase_entry.status == 0) %>

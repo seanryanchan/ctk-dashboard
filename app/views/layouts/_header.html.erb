@@ -1,8 +1,7 @@
 <div class="navbar text-white d-flex flex-row-reverse">
-  <h4 class="d-flex p-2">
+  <h4 class="p-2">
     Hello, <%= current_user.username %>
   </h4>
-  <div class="d-flex p-3">
-    <%= link_to '#', user_path(current_user) %>
-  </div>
+
+  <%= link_to '#', user_path(current_user), class: "p-2" %>
 </div>

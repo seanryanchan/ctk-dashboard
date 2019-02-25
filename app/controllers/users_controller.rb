@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   def newPurchasing
     @user = User.new()
-    render 'create_purchasing_account'
   end
 
   # rank of 0 is purchasing account

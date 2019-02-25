@@ -1,6 +1,13 @@
 class PurchaseEntriesController < ApplicationController
   before_action :set_purchase_entry, only: [:show, :edit, :update, :destroy]
 
+  def newEntryToOrder
+    #
+  end
+  def createEntryToOrder
+    #
+  end
+
   # status legend
   # 0 - unconfirmed
   # 1 - confirmed
