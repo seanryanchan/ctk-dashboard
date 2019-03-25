@@ -1,6 +1,12 @@
 class PurchaseEntriesController < ApplicationController
   before_action :set_purchase_entry, only: [:show, :edit, :update, :destroy]
 
+  def releaseBacklog
+    @purchase_entry = PurchaseEntry.find_by(product_id: params[:id])
+    @purchase_entry.delete
+    redirect_to backlogs_path
+  end
+
   def newEntryToOrder
     #
   end
@@ -22,9 +28,8 @@ class PurchaseEntriesController < ApplicationController
   def backlog
     @product = Product.find(params[:id])
     @purchase_entry = PurchaseEntry.new(purchase_entry_params)
-    @purchase_entry.status = 2
+    @purchase_entry.status = PurchaseEntriesHelper::BACKLOGGED
     @purchase_entry.product_id = @product.id
-    @purchase_entry.brand = @product.brand
     respond_to do |format|
       if @purchase_entry.save
         format.html { redirect_to @purchase_entry, notice: 'Purchase entry was successfully created.' }
@@ -46,7 +51,6 @@ class PurchaseEntriesController < ApplicationController
     @product = Product.find(params[:id])
     @purchase_entry = PurchaseEntry.new(purchase_entry_params)
     @purchase_entry.product_id = @product.id
-    @purchase_entry.brand = @product.brand
     @products = Product.all
     respond_to do |format|
       if @purchase_entry.save
@@ -60,7 +64,7 @@ class PurchaseEntriesController < ApplicationController
   end
 
   def showBacklogs
-    @purchase_entries = PurchaseEntry.all
+    @purchase_entries = PurchaseEntry.where(status: PurchaseEntriesHelper::BACKLOGGED)
     render "backlogs"
   end
   # GET /purchase_entries

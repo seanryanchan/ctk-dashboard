@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  delete '/backlogs/:id', to: 'purchase_entries#releaseBacklog', as: 'release_backlog'
+
   get '/create_user', to: 'users#newUser', as: 'create_user'
   post '/create_user', to: 'users#createUser'
   get '/users/:id', to: 'users#show', as: 'user'

@@ -2,9 +2,10 @@
 
 <h1>Purchase Entries</h1>
 
-<table>
+<table class="table text-white table-dark table-striped">
   <thead>
     <tr>
+      <th>SKU</th>
       <th>Product name</th>
       <th>Product qty</th>
       <th>Status</th>
@@ -15,7 +16,8 @@
   <tbody>
     <% @purchase_entries.each do |purchase_entry| %>
       <tr>
-        <td><%= purchase_entry.brand %></td>
+        <td><%= purchase_entry.product.id %></td>
+        <td><%= purchase_entry.product.brand %></td>
         <td><%= purchase_entry.product_qty %></td>
         <td><%= purchase_entry.status %></td>
         <td><%= link_to 'Show', purchase_entry %></td>
