@@ -16,10 +16,10 @@
     <% if logged_in? %>
       <div class="field">
         <%= form.label :rank, 'User Type' %>
-        <% if current_user.rank == 0 %>
+        <% if current_user.rank == UsersHelper::PURCHASING %>
           <%= form.select :rank, ['Purchasing'] %>
         <% end %>
-        <% if current_user.rank == 1 %>
+        <% if current_user.rank == UsersHelper::ADMIN %>
           <%= form.select :rank, ['Admin', 'Purchasing'] %>
         <% end %>
       </div>

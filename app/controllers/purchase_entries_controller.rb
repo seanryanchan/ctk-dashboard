@@ -51,6 +51,14 @@ class PurchaseEntriesController < ApplicationController
     @product = Product.find(params[:id])
     @purchase_entry = PurchaseEntry.new(purchase_entry_params)
     @purchase_entry.product_id = @product.id
+    case @purchase_entry.status
+    when "Unconfirmed"
+      @purchase_entry.status = PurchaseEntriesHelper::UNCONFIRMED
+    when "Confirmed"
+      @purchase_entry.status = PurchaseEntriesHelper::CONFIRMED
+    when "Backlogged"
+      @purchase_entry.status = PurchaseEntriesHelper::BACKLOGGED
+    end
     @products = Product.all
     respond_to do |format|
       if @purchase_entry.save

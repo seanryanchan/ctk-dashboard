@@ -12,21 +12,19 @@ class UsersController < ApplicationController
     @user = User.new()
   end
 
-  # rank of 0 is purchasing account
   def createPurchasing
     @user = User.new(user_params)
-    @user.rank = 0
+    @user.rank = UsersHelper::PURCHASING
     if @user.save
       log_in(@user)
       flash.now[:success] = "Successfully logged in."
       redirect_to products_path
     else
-      flash.now[:danger] = @user.errors.messages
-      redirect_to signup_path
+      render 'newPurchasing'
     end
   end
 
-  # This is for existing logged in users.
+  # This is for existing logged in users, when they make another account.
   def newUser
     @newUser = User.new()
   end
@@ -38,9 +36,9 @@ class UsersController < ApplicationController
     @newUser.password_confirmation = params[:user][:password_confirmation]
     case params[:user][:rank]
     when 'Purchasing'
-      @newUser.rank = 0
+      @newUser.rank = UsersHelper::PURCHASING
     when 'Admin'
-      @newUser.rank = 1
+      @newUser.rank = UsersHelper::ADMIN
     end
     if @newUser.save
       flash.now[:success] = "Successfully created the user: #{@newUser.username}"
