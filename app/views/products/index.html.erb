@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-lg-auto">
       <%= form_tag({controller: "products", action: "brandQuery"}, method: :get, class: :form) do |form| %>
-        <input id="brand_query"ntype="text" name="brand_query">
+        <input id="brand_query"ntype="text" name="brand_query" placeholder="Brand Name">
         <%= submit_tag 'Search', name: nil, class: "" %>
       <% end %>
     </div>

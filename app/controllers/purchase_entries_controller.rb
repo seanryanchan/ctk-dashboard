@@ -8,6 +8,8 @@ class PurchaseEntriesController < ApplicationController
       @purchase_entry.product.quantity = newQty
       @purchase_entry.product.save
       @purchase_entry.delete
+    else
+      flash["danger"] = "You currently do not have enough quantity of the product."
     end
     redirect_to backlogs_path
   end
