@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
   def release
     @product = Product.find(params[:id])
     newQty = @product.quantity - params[:released_qty].to_i
-    if newQty < 0
+    if newQty > 0
       @product.quantity = newQty
     end
     respond_to do |format|
