@@ -37,7 +37,10 @@ class ProductsController < ApplicationController
 
   def release
     @product = Product.find(params[:id])
-    @product.quantity = @product.quantity - params[:released_qty].to_i
+    newQty = @product.quantity - params[:released_qty].to_i
+    if newQty < 0
+      @product.quantity = newQty
+    end
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }

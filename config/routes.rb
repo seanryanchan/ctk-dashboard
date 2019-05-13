@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get 'year_end', to: 'products#yearEnd', as: 'year_end'
   resources :purchase_entries
   resources :purchase_orders
+
+  # actions show,index,new,create,delete,update,edit
   resources :products do
     member do
       get 'add_form', to: 'products#addForm', as: 'add_quantity_form'
@@ -33,4 +35,5 @@ Rails.application.routes.draw do
       get 'search', to: 'products#brandQuery', as: 'brand_query'
     end
   end
+
 end
