@@ -7,7 +7,7 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.2'
 
 # Use Bootstrap and JQuery and popper.js and sprockets-rails
-gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap', '>= 4.3.1'
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.5'
 gem 'sprockets-rails', :require => 'sprockets/railtie'

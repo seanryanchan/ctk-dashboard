@@ -1,12 +1,15 @@
 class ProductsController < ApplicationController
+  require 'csv'
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :require_logged_in, only: [:getYearEndCSV, :yearEnd]
 
   def yearEnd
-    if logged_in?
-      @products = Product.all
-    else
-      redirect_to root_url
-    end
+    @products = Product.all
+  end
+
+  def getYearEndCSV
+    @products = Product.all
+    send_data (Product.to_csv)
   end
 
   def addForm
@@ -129,6 +132,8 @@ class ProductsController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -138,5 +143,12 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:brand, :product_type, :quantity, :unit_price, :brand_query, :released_qty, :add_qty)
+    end
+
+    # Only allow logged in people -- callback method
+    def require_logged_in
+      if !logged_in?
+        redirect_to root_url
+      end
     end
 end

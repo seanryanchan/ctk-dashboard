@@ -1,5 +1,5 @@
 <% @purchase_orders.each do |purchase_order| %>
-<div class="card bg-dark text-white">
+<div class="card bg-dark text-white" style="box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.2);">
   <div class="card-body bg-secondary">
     <h4 class="card-title">Inventory Request #<%= purchase_order.id %></h4>
       <% if (purchase_order.status.upcase == "UNCONFIRMED") %>
@@ -15,7 +15,7 @@
     <% if purchase_order.purchase_entries.length == 0 %>
       <h6 class="text-center">No entries in this purchase order!</h6>
     <% else %>
-      <table class="table">
+      <table class="table table-dark">
         <thead>
           <tr>
             <th>Brand</th>

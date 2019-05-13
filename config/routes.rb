@@ -36,4 +36,5 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'year_end_report_csv', to: 'products#getYearEndCSV'
 end
