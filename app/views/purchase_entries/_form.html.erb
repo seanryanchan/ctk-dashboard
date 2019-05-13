@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :brand %>
-    <%= form.text_field :brand %>
-  </div>
-
-  <div class="field">
     <%= form.label :product_id, value: "Product ID" %>
     <%= form.text_field :product_id %>
   </div>
@@ -28,11 +23,11 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.number_field :status %>
+    <%= form.select :status, [["CONFIRMED", PurchaseEntriesHelper::CONFIRMED],["UNCONFIRMED", PurchaseEntriesHelper::UNCONFIRMED],["BACKLOGGED", PurchaseEntriesHelper::BACKLOGGED]] %>
   </div>
 
   <div class="field">
-    <%= form.label :purchase_order_id, value: "Purchase Order ID"%>
+    <%= form.label :purchase_order_id, value: "Inventory Request ID"%>
     <%= form.text_field :purchase_order_id  %>
   </div>
   <div class="actions">

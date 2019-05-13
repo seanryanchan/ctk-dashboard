@@ -1,7 +1,7 @@
 <% @purchase_orders.each do |purchase_order| %>
 <div class="card bg-dark text-white">
   <div class="card-body bg-secondary">
-    <h4 class="card-title">PO #<%= purchase_order.id %></h4>
+    <h4 class="card-title">Inventory Request #<%= purchase_order.id %></h4>
       <% if (purchase_order.status.upcase == "UNCONFIRMED") %>
          <h5 class="text-danger">UNCONFIRMED</h5>
       <% end %>

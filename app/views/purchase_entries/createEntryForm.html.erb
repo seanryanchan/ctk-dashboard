@@ -57,8 +57,8 @@
           <%= form.select :status, ['Unconfirmed', 'Confirmed', 'Backlogged'] %>
         </div>
         <div class="field">
-          <%= form.label :purchase_order_id, value: "Purchase Order ID" %>
-          <%= form.number_field :purchase_order_id %>
+          <%= form.label :purchase_order_id, value: "Inventory Request ID" %>
+          <%= form.select :purchase_order_id, PurchaseOrder.ids %>
         </div>
         <div class="actions">
           <%= form.submit 'Create Purchase Entry', class: "btn btn-primary" %>
@@ -68,5 +68,5 @@
     </div>
   </div>
 </div>
-<h2>List of Purchase Orders</h2>
+<h2>List of Inventory Requests</h2>
 <%= render 'purchase_orders/list_purchase_orders' %>

@@ -3,7 +3,12 @@ class PurchaseEntriesController < ApplicationController
 
   def releaseBacklog
     @purchase_entry = PurchaseEntry.find_by(product_id: params[:id])
-    @purchase_entry.delete
+    newQty =@purchase_entry.product.quantity - @purchase_entry.product_qty
+    if newQty > 0
+      @purchase_entry.product.quantity = newQty
+      @purchase_entry.product.save
+      @purchase_entry.delete
+    end
     redirect_to backlogs_path
   end
 
